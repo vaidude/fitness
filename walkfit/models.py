@@ -34,7 +34,7 @@ from django.db import models
 from django.conf import settings
 
 class FitnessRecord(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, blank=True)
+    user = models.ForeignKey(Register, on_delete=models.CASCADE, null=True, blank=True)
     distance_km = models.FloatField(default=0.0)
     steps = models.PositiveIntegerField(default=0)
     calories = models.PositiveIntegerField(default=0)
@@ -43,3 +43,16 @@ class FitnessRecord(models.Model):
 
     def __str__(self):
         return f"{self.user or 'Anon'} - {self.steps} steps"
+
+from django.db import models
+from datetime import time
+
+class Reminder(models.Model):
+    
+    user = models.ForeignKey(Register, on_delete=models.CASCADE, null=True, blank=True)
+    remind_water    = models.BooleanField(default=True)
+    remind_exercise = models.BooleanField(default=True)
+    remind_diet     = models.BooleanField(default=True)
+    
+    remind_time = models.TimeField(default=time(6, 0))
+

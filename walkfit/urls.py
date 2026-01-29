@@ -13,4 +13,11 @@ urlpatterns=[
     path('listvideo/', views.video_list, name='listvideo'),
     path('addvideo/', views.video_add, name='addvideo'),
     path('fitness_tracker/', views.fitness_tracker, name='fitness_tracker'),
+    path('adlogin/',views.adminlogin,name='adlogin'),
+    path('adhome/',views.adhome,name='adhome'),
+    path('userlist/',views.userlist,name='userlist'),
+    path('deleteuser/<int:id>/',views.deleteuser,name='deleteuser'),
+    path('deletevideo/<int:id>/',views.deletevideo,name='deletevideo'),
+    path('manage_reminder/', views.manage_reminder, name='manage_reminder'),
+    path('get_daily_reminder/', views.get_daily_reminder, name='get_daily_reminder'),
 ]

@@ -53,6 +53,17 @@
     </video>
     
     <p><small>Added: {{ v.created_at|date:"d M Y  -  H:i" }}</small></p>
+    <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+  <form method="POST" action="{% url 'deletevideo' v.id %}" class="inline">
+    {% csrf_token %}
+    <button type="submit"
+            onclick="return confirm('Are you sure you want to delete this video?');"
+            class="text-red-500 hover:text-red-700">
+      Delete
+    </button>
+  </form>
+</td>
+
 </div>
 {% empty %}
     <p style="color:#777;">No videos available yet...</p>
